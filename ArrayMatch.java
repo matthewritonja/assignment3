@@ -16,7 +16,6 @@ static boolean match(int[] a, int[] b) {
 
     if (n % 2 == 0) { 
 
-
         // if n is divisible by 2
         // divide a and b into two sub-arrays of equal size.
         int new_length = n/2;
@@ -38,38 +37,26 @@ static boolean match(int[] a, int[] b) {
             
         }
         
-    
         boolean a1MatchesB1 = match(a1, b1);
         boolean a1MatchesB2 = match(a1, b2);
 
         boolean a2MatchesB1 = match(a2, b1);
         boolean a2MatchesB2 = match(a2, b2);
         
-        if (a1MatchesB1 && a2MatchesB2) {
-            return true;
-        } else if (a1MatchesB1 && a1MatchesB2) {
-            return true;
-        } else if (a2MatchesB1 && a2MatchesB2) {
-            return true;
-        } else {
-            return false;
-        }
-
-        //return (a1MatchesB1 && a2MatchesB2) || (a1MatchesB1 && a1MatchesB2) || (a2MatchesB1 && a2MatchesB2);
+        
+        return (a1MatchesB1 && a2MatchesB2) || (a1MatchesB1 && a1MatchesB2) || (a2MatchesB1 && a2MatchesB2);
 
         
 
     } else { 
+
         // compare each element of both arrays
 
         // if any element is not equal in both arrays
         // return false, since the arrays are not equal, so condition 1 is not satisfied,
         // and condition 2 is not satisfied either, since n is not divisible by 2
 
-
         for (int i=0; i<n; i++) {
-            //System.out.println(a[i]);
-            //System.out.println(b[i]);
             if (a[i] != b[i]) {
                 return false;
             }
@@ -93,7 +80,7 @@ public static void main(String[] args) {
 
         Scanner testScanner = new Scanner(new FileInputStream(args[0]));
         int arraySize = testScanner.nextInt();
-        //System.out.println("arraysize is "+ arraySize);
+        
         int a[];
         int b[];
         
@@ -105,9 +92,9 @@ public static void main(String[] args) {
 
             testScanner.nextLine();
             String aElements = testScanner.nextLine();
-            //System.out.println("aelements is " + aElements);
+            
             String bElements = testScanner.nextLine();
-            //System.out.println("belements is " + bElements);
+            
             testScanner.close();
 
             

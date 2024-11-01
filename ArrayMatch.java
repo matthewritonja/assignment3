@@ -12,9 +12,6 @@ static boolean match(int[] a, int[] b) {
     if (n == 0) {
         return true;
     }
-
-    int reps;
-
     
 
     if (n % 2 == 0) { 
@@ -50,8 +47,17 @@ static boolean match(int[] a, int[] b) {
         boolean a2MatchesB1 = match(a2, b1);
         boolean a2MatchesB2 = match(a2, b2);
         
+        if (a1MatchesB1 && a2MatchesB2) {
+            return true;
+        } else if (a1MatchesB1 && a1MatchesB2) {
+            return true;
+        } else if (a2MatchesB1 && a2MatchesB2) {
+            return true;
+        } else {
+            return false;
+        }
 
-        return (a1MatchesB1 && a2MatchesB2) || (a1MatchesB1 && a1MatchesB2) || (a2MatchesB1 && a2MatchesB2);
+        //return (a1MatchesB1 && a2MatchesB2) || (a1MatchesB1 && a1MatchesB2) || (a2MatchesB1 && a2MatchesB2);
 
         
 
@@ -61,13 +67,9 @@ static boolean match(int[] a, int[] b) {
         // if any element is not equal in both arrays
         // return false, since the arrays are not equal, so condition 1 is not satisfied,
         // and condition 2 is not satisfied either, since n is not divisible by 2
-        if (n==1) {
-            reps = 1;
-        } else {
-            reps = n;
-        }
 
-        for (int i=0; i<reps; i++) {
+
+        for (int i=0; i<n; i++) {
             //System.out.println(a[i]);
             //System.out.println(b[i]);
             if (a[i] != b[i]) {
@@ -75,7 +77,7 @@ static boolean match(int[] a, int[] b) {
             }
         }
 
-        
+         
     }
 
     return true;
@@ -116,15 +118,7 @@ public static void main(String[] args) {
             a = new int[arraySize];
             b = new int[arraySize];
             
-            int reps;
-
-            if (arraySize==1) {
-                reps = 1;
-            } else {
-                reps = arraySize;
-            }
-            for (int i=0; i<reps; i++) {
-
+            for (int i=0; i<arraySize; i++) {
                 a[i] = Integer.parseInt(aStr[i]);
                 b[i] = Integer.parseInt(bStr[i]);
 
@@ -144,6 +138,8 @@ public static void main(String[] args) {
 
     } catch (FileNotFoundException e) {
         System.out.println("Error, please use an existing filename!");
+    } catch (Exception e) {
+        
     }
     
 }

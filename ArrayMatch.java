@@ -26,10 +26,8 @@ static boolean match(int[] a, int[] b) {
         int[] b1 = new int[new_length];
         int[] b2 = new int[new_length];
 
-        int i;
 
-
-        for (i=0; i<new_length; i++) { 
+        for (int i=0; i<new_length; i++) { 
 
             //fill new split arrays with values
 
